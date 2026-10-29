@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1110">
+<title>Chirag.dev | Chirag Agarwal</title>
+
+<style>
+:root {
+  --bg: #0b1110;
+  --panel: #111a18;
+  --line: #24332e;
+  --text: #e8f0eb;
+  --muted: #9aaba2;
+  --green: #8df0b5;
+  --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 75% 0%, #173026 0, transparent 38%), var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  line-height: 1.65;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: min(1040px, 90%);
+  margin: auto;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  background: #0b1110e8;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 2;
+}
+
+.navin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.logo span, .green { color: var(--green); }
+
+.links {
+  display: flex;
+  gap: 22px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.links a:hover { color: var(--green); }
+
+.hero { padding: 105px 0 82px; }
+
+.eyebrow {
+  font: .85rem var(--mono);
+  color: var(--green);
+}
+
+h1 {
+  font-size: clamp(2.7rem, 7vw, 5.3rem);
+  letter-spacing: -.055em;
+  line-height: 1.04;
+  margin: 20px 0;
+}
+
+h1 span { color: var(--green); }
+
+.intro {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 650;
+}
+
+.btn.primary {
+  background: var(--green);
+  color: #08120d;
+  border-color: var(--green);
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+section {
+  padding: 48px 0;
+  scroll-margin-top: 76px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.section-head h2 {
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: -.03em;
+}
+
+.section-head:after {
+  content: "";
+  height: 1px;
+  background: var(--line);
+  flex: 1;
+}
+
+.num {
+  font: .85rem var(--mono);
+  color: var(--green);
+}
+
+.panel, .project, .skill {
+  border: 1px solid var(--line);
+  background: #111a18d9;
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.panel p, .project p, .skill p { color: var(--muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.project .top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: .82rem;
+}
+
+.project h3 {
+  margin: 16px 0 8px;
+  font-size: 1.15rem;
+}
+
+.project p {
+  margin: 0 0 14px;
+  font-size: .95rem;
+}
+
+.project p strong { color: var(--text); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.tag {
+  font: .75rem var(--mono);
+  color: #c3d7ca;
+  background: #1b2923;
+  border: 1px solid #2c4135;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.skill h3 { margin: 0 0 10px; font-size: 1rem; }
+.skill p { margin: 0; font-size: .9rem; }
+
+.note { color: var(--muted); font-size: .9rem; }
+
+.contact { padding-bottom: 82px; }
+
+.contactbox {
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: linear-gradient(120deg, #14241b, #101816);
+  border-radius: 14px;
+}
+
+.contactbox p { color: var(--muted); max-width: 620px; }
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+  color: var(--muted);
+  font: .8rem var(--mono);
+}
+
+.nutrition-shots {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 10px 0 18px;
+}
+
+.nutrition-shots figure,
+.electric-gallery figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  background: #f4f5f5;
+}
+
+.nutrition-shots img,
+.electric-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nutrition-shots figcaption {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.resume-panel h3 { margin: 22px 0 6px; }
+.resume-panel h3:first-child { margin-top: 0; }
+
+.resume-panel a:not(.btn) {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.electric-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 10px 0 18px;
+}
+
+.electric-gallery figure { min-width: 0; }
+
+.electric-gallery figure.wide { grid-column: 1 / -1; }
+
+.electric-gallery figcaption {
+  padding: 10px 12px;
+  color: #52645a;
+  background: #111a18;
+  font-size: .85rem;
+}
+
+.writing-details {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(128, 128, 128, .25);
+  padding-top: .85rem;
+}
+
+.writing-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--green);
+  padding: .25rem 0;
+}
+
+.writing-content { margin-top: 1rem; line-height: 1.75; }
+.writing-content p { margin: 0 0 .85rem; }
+.writing-content h4 { margin: 1.2rem 0 .45rem; }
+.writing-content code { white-space: normal; overflow-wrap: anywhere; }
+
+@media (max-width: 700px) {
+  .links {
+    gap: 10px;
+    font-size: .76rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hero { padding: 75px 0 55px; }
+
+  .grid, .about, .skills, .electric-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .panel, .project, .skill { padding: 18px; }
+  .navin { align-items: flex-start; }
+  .logo { font-size: .9rem; }
+
+  .electric-gallery figure.wide { grid-column: auto; }
+}
+</style>
+</head>
+
+<body>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="logo" href="#home">Chirag<span>.dev</span></a>
+    <nav class="links">
+      <a href="#about">Introduction</a>
+      <a href="#projects">Projects</a>
+      <a href="#courses">Courses</a>
+      <a href="#writing">Writing</a>
+      <a href="#resume">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+
+  <div class="wrap hero">
+    <div class="eyebrow">// STUDENT DEVELOPER · VIT VELLORE</div>
+    <h1>Hi, I'm Chirag.<br><span>I build things</span> with code.</h1>
+    <p class="intro">
+      B.Tech CSE student specialising in Cybersecurity. Learning software
+      development one project at a time, with a growing interest in Python,
+      databases, and secure systems.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore my projects ↘</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>Introduction</h2>
+      </div>
+
+      <div class="panel">
+        <p>
+          I'm Chirag Agarwal, a B.Tech Computer Science and Engineering student
+          in the Cybersecurity track at VIT Vellore. I'm building my foundations
+          in programming, computing, and secure systems while exploring how
+          technology can solve practical problems.
+        </p>
+        <p>
+          I chose this field because I enjoy understanding how software works
+          and how it can be designed to be useful, reliable, and secure. I want
+          to strengthen my programming and problem-solving skills, work on
+          practical projects, and eventually contribute to software development
+          and cybersecurity-focused systems.
+        </p>
+        <p>
+          This portfolio presents projects I have worked on or am developing,
+          three important courses from my studies, selected English and subject
+          assignments, and my one-page resume.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="grid">
+
+        <article class="project">
+          <div class="top">
+            <span>01 / IN DEVELOPMENT</span>
+            <span>PROJECT</span>
+          </div>
+
+          <h3>Nutrition Tracker &amp; Diet Manager</h3>
+          <p><strong>What it is:</strong> A planned desktop application for recording daily food intake and tracking calories and macronutrients against personal goals.</p>
+          <p><strong>Methods:</strong> Python for application logic, Tkinter for the graphical interface, and SQLite planned for storing user profiles, foods, and meal records.</p>
+          <p><strong>Expected results:</strong> A simple way to record meals and review daily nutrition totals. This project is still in development.</p>
+
+          <div class="nutrition-shots">
+            <figure>
+              <img src="assets/asset_1.png" alt="Nutrition Tracker dashboard">
+              <figcaption>Dashboard — daily calorie intake, nutrition targets, meals, and macronutrient split.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/asset_2.png" alt="Nutrition Tracker trends page">
+              <figcaption>Trends — calorie and macronutrient charts with body-weight history.</figcaption>
+            </figure>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Tkinter</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">In progress</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="top">
+            <span>02 / COURSE PROJECT</span>
+            <span>PROJECT</span>
+          </div>
+
+          <h3>Electric Field &amp; Potential Simulator</h3>
+          <p><strong>What it is:</strong> A GNU Octave project exploring electric potential, electric field, and related multivariable-calculus concepts.</p>
+          <p><strong>Methods:</strong> Mathematical expressions and numerical calculations to visualise potential and field behaviour, then examine gradient and Laplacian relationships.</p>
+          <p><strong>Results:</strong> Visualisations show electric potential and field directions for two point charges. Numerical checks compare the computed gradient, line integrals, and electric flux with expected relationships.</p>
+
+          <div class="electric-gallery">
+            <figure>
+              <img src="assets/asset_3.png" alt="Electric field direction plots" loading="lazy">
+              <figcaption>Electric field direction — normalized arrows compared across both field visualisations.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/asset_4.png" alt="Electric potential visualisation" loading="lazy">
+              <figcaption>Electric potential visualisation.</figcaption>
+            </figure>
+            <figure class="wide">
+              <img src="assets/asset_5.png" alt="Electric field and potential results" loading="lazy">
+              <figcaption>Additional simulator results.</figcaption>
+            </figure>
+          </div>
+
+          <div class="tags">
+            <span class="tag">GNU Octave</span>
+            <span class="tag">Physics</span>
+            <span class="tag">Vector Calculus</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="top">
+            <span>03 / EARLY STAGE</span>
+            <span>COLLABORATION</span>
+          </div>
+          <h3>ExpanSe — Study Briefs</h3>
+          <p>A collaborative effort to organise learning material into concise study briefs, with a focus on clear explanations and cybersecurity concepts.</p>
+          <img src="assets/asset_6.png" alt="ExpanSe study brief screenshot" loading="lazy">
+          <div class="tags">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Study Material</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>Classes / Courses Taken</h2>
+      </div>
+
+      <div class="grid">
+        <article class="project">
+          <div class="top"><span>COURSE 01</span><span>VIT</span></div>
+          <h3>Programming / Python</h3>
+          <p><strong>Subject knowledge:</strong> Describe the programming concepts covered in your course, such as variables, conditionals, loops, functions, collections, or file handling, if applicable.</p>
+          <p><strong>Skills gained:</strong> Explain how you practised writing, testing, and debugging programs.</p>
+        </article>
+
+        <article class="project">
+          <div class="top"><span>COURSE 02</span><span>VIT</span></div>
+          <h3>Engineering Mathematics / Vector Calculus</h3>
+          <p><strong>Subject knowledge:</strong> Describe topics such as gradients, divergence, curl, and integral theorems where these match your syllabus.</p>
+          <p><strong>Skills gained:</strong> Explain how you apply mathematical methods to solve problems.</p>
+        </article>
+
+        <article class="project">
+          <div class="top"><span>COURSE 03</span><span>VIT</span></div>
+          <h3>Physics / Quantum Concepts</h3>
+          <p><strong>Subject knowledge:</strong> Add the specific topics from your course that match your syllabus.</p>
+          <p><strong>Skills gained:</strong> Describe how you developed conceptual understanding and mathematical reasoning.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">04</span>
+        <h2>Sample Writing</h2>
+      </div>
+
+      <div class="grid">
+        <article class="project">
+          <div class="top"><span>SAMPLE 01</span><span>ENGLISH</span></div>
+          <h3>Oral Book Review: <em>The Kite Runner</em></h3>
+          <p><strong>Author:</strong> Khaled Hosseini</p>
+
+          <details class="writing-details">
+            <summary>Read the complete English sample</summary>
+            <div class="writing-content">
+              <p>A kite is supposed to symbolise joy, freedom, and childhood memories, right? But what if I told you that one kite-flying competition could change the lives of two friends forever?</p>
+              <p><em>The Kite Runner</em>—don't get confused by the name. It's not just a novel about flying kites. It's a story about friendship, betrayal, and the journey towards redemption.</p>
+              <p>Written by Khaled Hosseini, it's a historical fiction novel set mainly in Afghanistan. The story revolves around two childhood friends, Hassan and Amir, who come from different social backgrounds but share a common love for kite flying.</p>
+              <p>However, one incident changes their lives forever. What could that incident be? Don't worry, I won't rob you of the wonderful experience of discovering it for yourself!</p>
+              <p>What makes this book extra special to me is that it was the first novel I ever read. It showed me that stories can be much more than entertainment; they can leave a lasting impact on us.</p>
+              <p>The most powerful aspect of this novel is its portrayal of friendship. It shows how loyalty can bring people closer, while betrayal and silence can tear them apart.</p>
+              <p>Another important theme is redemption. Imagine getting a chance to correct a mistake you made in the past. Would you take it? Would you have the courage to face your past and make things right? In this story, Amir gets a chance to confront his past and seek redemption. And that makes you wonder: <strong>is it ever too late to make things right?</strong></p>
+              <p>I would recommend <em>The Kite Runner</em> to anyone who enjoys emotional stories that make you think beyond the pages. It can be heartbreaking at times, but it also makes you reflect on friendship, forgiveness, and the choices we make.</p>
+              <p>For me, this book taught me that we cannot always change what has happened, but we can choose how we respond to it.</p>
+              <p>And if my first novel could leave such a lasting impression on me, I believe it might do the same for you.</p>
+              <p>So, give <em>The Kite Runner</em> a chance. You might pick it up for the story, but you may put it down with a completely different perspective on friendship and life...</p>
+            </div>
+          </details>
+        </article>
+
+        <article class="project">
+          <div class="top"><span>SAMPLE 02</span><span>SUBJECT · CYBERSECURITY</span></div>
+          <h3>ExpanSe — Brief (Cyber Security)</h3>
+
+          <details class="writing-details">
+            <summary>Read the complete subject sample</summary>
+            <div class="writing-content">
+              <h4>Introduction</h4>
+              <p>In ExpanSe, sensors send readings such as crack width or expansion to the server. Since these readings may be used as proof later, we need to make sure the readings are not manipulated.</p>
+
+              <h4>Threat Model</h4>
+              <p>An attacker could change a reading, send an old reading, or modify the database. The attacker may want to tamper with evidence in a dispute about property or money.</p>
+
+              <h4>HMAC</h4>
+              <p>Each sensor and server share a secret key. The sensor uses the key to create an HMAC. The server also creates the HMAC again and checks if they match.</p>
+              <p>HMAC gives integrity and authenticity, but does not provide non-repudiation, freshness, or confidentiality.</p>
+
+              <h4>Replay Protection</h4>
+              <p>An attacker can send a previous reading for which the HMAC will match. To stop this, we add a counter or nonce to every reading. The server checks whether the counter is new or an old one is being replayed.</p>
+              <p>The counter must be included inside the HMAC-protected data so that it cannot be changed.</p>
+
+              <h4>Hash Chain</h4>
+              <p>The stored readings are connected using a hash chain:</p>
+              <p><code>h₀ = H(h₋₁ || payload₀)</code></p>
+              <p>Every record depends on the previous one. If someone manipulates old records, the hash no longer matches the new record, so the change can be detected.</p>
+              <p>However, if someone has access to the database, they could recalculate the whole chain. So, the head hash should be stored somewhere outside the database.</p>
+
+              <h4>Conclusion</h4>
+              <p>Overall, my part in ExpanSe is to make sensor readings secure, trustworthy, traceable, and difficult to tamper with.</p>
+            </div>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">05</span>
+        <h2>Resume</h2>
+      </div>
+
+      <div class="panel resume-panel">
+        <h3>Chirag Agarwal</h3>
+        <p class="green">B.Tech Computer Science &amp; Engineering — Cybersecurity Track</p>
+
+        <p>
+          VIT Vellore · India<br>
+          <a href="mailto:chirag.agarwal2026@vitstudent.ac.in">chirag.agarwal2026@vitstudent.ac.in</a>
+          ·
+          <a href="https://www.linkedin.com/in/chirag-agarwal-5bb501430/" target="_blank" rel="noopener noreferrer">LinkedIn profile ↗</a>
+        </p>
+
+        <h3>Profile</h3>
+        <p>First-year Computer Science student developing practical skills in Python, programming fundamentals, data handling, and cybersecurity concepts.</p>
+
+        <h3>Education</h3>
+        <p><strong>Vellore Institute of Technology (VIT), Vellore</strong><br>B.Tech, Computer Science &amp; Engineering — Cybersecurity track<br><span class="note">Currently pursuing</span></p>
+
+        <h3>Projects</h3>
+        <p><strong>Nutrition Tracker &amp; Diet Manager</strong> — Developing a Python desktop application with a Tkinter interface for tracking calories, macronutrients, meal logs, targets, and trends.</p>
+        <p><strong>Electric Field &amp; Potential Simulator</strong> — GNU Octave coursework project exploring electric potential and field behaviour through plots and numerical checks.</p>
+        <p><strong>ExpanSe — Collaborative Study Briefs</strong> — Early-stage collaboration on organising learning material into concise PDF-based study resources.</p>
+
+        <h3>Technical Skills</h3>
+        <p>Python fundamentals · C++ basics · NumPy · pandas · GNU Octave · Git/GitHub · VS Code · Tkinter · SQL/SQLite</p>
+
+        <h3>Relevant Learning</h3>
+        <p>Programming fundamentals and problem-solving; engineering mathematics and vector calculus; physics and introductory quantum concepts.</p>
+
+        <a class="btn primary" href="assets/asset_7.pdf" download="chirag_resume.pdf">Download one-page resume (PDF) ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">06</span>
+        <h2>Skills &amp; Learning</h2>
+      </div>
+
+      <div class="skills">
+        <div class="skill">
+          <h3>Programming</h3>
+          <p>Python fundamentals, C++ basics, problem-solving, and learning through small programs.</p>
+        </div>
+        <div class="skill">
+          <h3>Tools &amp; data</h3>
+          <p>VS Code, Git/GitHub, Tkinter, SQLite, NumPy, pandas, and GNU Octave.</p>
+        </div>
+        <div class="skill">
+          <h3>Exploring next</h3>
+          <p>Data structures and algorithms, Linux, networking, web security, and secure software design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">07</span>
+        <h2>Contact</h2>
+      </div>
+
+      <div class="contactbox">
+        <h3>Let's connect.</h3>
+        <p>Interested in student projects, collaborative work, or exchanging ideas about software development and cybersecurity? Feel free to reach out.</p>
+
+        <div class="actions">
+          <a class="btn primary" href="mailto:chirag.agarwal2026@vitstudent.ac.in">Email me ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/chirag-agarwal-5bb501430/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+
+        <p class="note">Email: <a href="mailto:chirag.agarwal2026@vitstudent.ac.in">chirag.agarwal2026@vitstudent.ac.in</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 Chirag Agarwal · Chirag.dev</div>
+</footer>
+
+</body>
+</html>
